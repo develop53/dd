@@ -1,0 +1,29 @@
+version: '3.8'
+  
+services:
+
+  login_service:
+    build:
+      context: ./login_service
+    container_name: login_service
+    # Dışarı açmaya gerek yok, çünkü Envoy üzerinden erişeceğiz.
+    volumes:
+      - /home/user/dnm/login_service/login_service.py:/app/login_service.py
+    expose:
+      - "5000"   
+    networks:
+      - keycloak_network    
+
+  hello_service:
+    build:
+      context: ./hello_service
+    container_name: hello_service
+    expose:
+      - "5001"
+    networks:
+      - keycloak_network
+
+networks:
+  keycloak_network:
+    driver: bridge        
+
