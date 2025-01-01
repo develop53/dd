@@ -39,8 +39,6 @@ services:
     container_name: envoy
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
-    # Envoy'u host tarafında 8080'e mapliyoruz ki dışarıdan
-    # http://localhost:8080 üzerinden erişelim.
     ports:
       - "10000:10000"
     depends_on:
