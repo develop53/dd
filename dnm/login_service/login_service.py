@@ -3,12 +3,9 @@ import requests
 
 app = Flask(__name__)
 
-# DİKKAT: İçeride "keycloak:8080" şeklinde kullanıyoruz.
-# Çünkü docker-compose içindeki Keycloak servisine
-# "keycloak" adıyla erişebiliyoruz.
 KEYCLOAK_TOKEN_URL = "http://192.168.1.105:8080/realms/myrealm/protocol/openid-connect/token"
 CLIENT_ID = "test"        # Keycloak Client Name
-CLIENT_SECRET = "jbLcQbTveQUqNWqoAKjBP0kLzzq2P30I"    # Keycloak'ta oluşturduğunuz client'ın secret değeri
+CLIENT_SECRET = "-"    # Keycloak'ta oluşturduğunuz client'ın secret değeri
 
 @app.route("/login", methods=["POST"])
 def login():
